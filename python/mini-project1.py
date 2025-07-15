@@ -13,7 +13,7 @@ while i<3:
         print("It's a tie!")
     elif (your_choice == "rock" and computer_choice == "scissors") or (your_choice == "paper" and computer_choice == "rock") or (your_choice == "scissors" and computer_choice == "paper"):
         print("You win this round!")
-        your_count += 1
+        your_count += 1 
     else:
         print("Computer wins this round!")
         computer_count += 1
