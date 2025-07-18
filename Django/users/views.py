@@ -15,10 +15,9 @@ class UserViewset(viewsets.ModelViewSet):
     queryset = Users.objects.all()
     serializer_class = UserSerializer
     permission_classes = [AllowAny]
+    
 
-    def delete(self, request, *args, **kwrgs):
-        Users.objects.all().delete()
-        return Response(status = status.HTTP_204_NO_CONTENT)
+
 
 # class UsersCreateList(generics.ListCreateAPIView):
 #     queryset = Users.objects.all()
