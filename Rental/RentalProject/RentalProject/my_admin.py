@@ -7,5 +7,5 @@ admin.site.site_header = "Texas College"
 admin.site.site_title = "Texas Admin"
 admin.site.index_title = "Texas Administration"
 
-admin.site.unregister(User)
-admin.site.unregister(Group)
+# admin.site.unregister(User)
+# admin.site.unregister(Group)

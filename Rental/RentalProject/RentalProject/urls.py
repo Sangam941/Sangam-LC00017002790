@@ -17,6 +17,7 @@ Including another URLconf
 
 import RentalProject.my_admin
 
+
 from django.contrib import admin
 from django.urls import include, path
 from users import urls as users_urls
@@ -25,6 +26,11 @@ from payment import urls as payment_urls
 from orders import urls as orders_urls
 from vehicles import urls as vehicles_urls
 
+from rest_framework_simplejwt.views import (
+    TokenObtainSlidingView,
+    TokenRefreshSlidingView,
+)
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('users/', include(users_urls)),
@@ -32,4 +38,6 @@ urlpatterns = [
     path('payment/', include(payment_urls)),
     path('orders/', include(orders_urls)),
     path('vehicles/', include(vehicles_urls)),
+    path('api/token/', TokenObtainSlidingView.as_view(), name='token_obtain'),
+    path('api/token/refresh/', TokenRefreshSlidingView.as_view(), name='token_refresh'),
 ]
