@@ -5,16 +5,16 @@ from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from .models import Users
 from .serializers import UserSerializer
+from .permissions import IsAdminOrReadOnly
 
 # Create your views here.
 
-def create(request):
-    return HttpResponse("hello from home")
+
 
 class UserViewset(viewsets.ModelViewSet):
     queryset = Users.objects.all()
     serializer_class = UserSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [IsAdminOrReadOnly]
 
     def delete(self, request, *args, **kwrgs):
         Users.objects.all().delete()

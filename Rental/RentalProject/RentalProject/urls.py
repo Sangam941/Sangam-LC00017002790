@@ -15,7 +15,6 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 
-import RentalProject.my_admin
 
 
 from django.contrib import admin
@@ -25,19 +24,23 @@ from booking import urls as booking_urls
 from payment import urls as payment_urls
 from orders import urls as orders_urls
 from vehicles import urls as vehicles_urls
+import RentalProject.my_admin
+
 
 from rest_framework_simplejwt.views import (
     TokenObtainSlidingView,
     TokenRefreshSlidingView,
+    TokenVerifyView
 )
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('users/', include(users_urls)),
+    path('users/', include('users.urls')),
     path('booking/', include(booking_urls)),
     path('payment/', include(payment_urls)),
     path('orders/', include(orders_urls)),
     path('vehicles/', include(vehicles_urls)),
+    path('api/token/verify/', TokenVerifyView.as_view(), name='token_verify'),
     path('api/token/', TokenObtainSlidingView.as_view(), name='token_obtain'),
     path('api/token/refresh/', TokenRefreshSlidingView.as_view(), name='token_refresh'),
 ]
